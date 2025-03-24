@@ -12,9 +12,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
- 
-app.post("/submit", (req, res) => {
-  console.log(req.body);
+
+app.post("/check", (req, res) => {
+  if (req.body["password"] === 'ILoveProgramming'){
+    res.sendFile(__dirname + "/public/secret.html");
+  } else {
+    res.sendFile(__dirname + "/public/index.html");
+  }
 });
 
 app.listen(port, () => {
